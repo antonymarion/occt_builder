@@ -1,0 +1,29 @@
+dist: trusty
+language: cpp
+cache: ccache
+os:
+- linux
+- osx
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-5
+    - cmake
+    - ccache
+    - libtbb-dev
+install:
+- bash build_occt.sh
+script:
+- make package
+deploy:
+  provider: releases
+  api_key:
+    secure: "fbfnMRzaSJx361buCp+70CO3C33VRINVcjji03KEsNXmwsSb0sAn1EPSaTpTLi4QkTCBYVgCzsIPrbCBQ64uFxNcxUfFFEXWlUvg7xl0N0oq4HdeY+nVM1UFKFlPY9G9R2iF8FhDDlbId5y7IQ8MtQFl09a8wKwwETMFV7NbyKx0x+oDRvzzQYXsVlAtBgtqxvHgQx/IcgEyGDgaRDc4eAwTtzTk9itAmmd2bk435LVcuVISvgrn2lPEDy/Ai35DoxtitmKFbFIOfm7dDxQjtMIR8n5ws+KWMK59VFAP5J2kp8Re5dbmBdgnWHyBzDfsPcQDz57TN/4HYC+EJlyp7EQejwlu61bKKkAstpTpAVSq/GDvsKwzADhlCBqMUT+L0PMBlc4R0RQSBLs12Co10USe9Olq/+NX8NJGvBSmAuVedTm1zCXyhukcejekUFb/Pb2aAU9Lih931AJ+iyqqWra+lxvto+b3k9Jt6WU6Zo0LZsHTZ2yVf+NRtWtpTrw3WKxjnSZPqDCoUAKpB4rkFpbo8yeQ4m9AjZJOEga5bHiYq9qZy6kxbUXhSUC2Z/EpLl/mTgItasHqtCFdARsKc0lVCX1xHngcetBdVJpwxl7thYBno5YEGU6pa8k/pqEInR+LDkpCCwQwm8HfaPRdKlNbcmf8xctiZnhbXSsu5hQ="
+  file: dist/occt-7.2.0-${TRAVIS_OS_NAME}.tgz
+  skip_cleanup: true
+  overwrite: true
+  on:
+    tags: true
+    repo: antonymarion/occt_builder

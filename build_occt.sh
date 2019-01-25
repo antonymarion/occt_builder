@@ -1,18 +1,18 @@
-if [ ! -f occt7.2.0.tgz ]
+if [ ! -f occt7.3.0.tgz ]
 then 
-  curl  -L -o occt7.2.0.tgz "http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=8662560e2c9c83de9ed97b522bebcad2cfc87b92;sf=tgz"
-  tar -xf occt7.2.0.tgz
-  mv occt-8662560 occt-7.2.0
+  curl  -L -o occt7.3.0.tgz "http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=2a8846f92e43a12ed86b566de289c45eb3842d75;sf=tgz"
+  tar -xf occt7.3.0.tgz
+  mv occt-8662560 occt-7.3.0
 
   echo -----------------------------------------------------------------
-  echo          PATCHING 7.2.0 TO SPEEDUP BUILD
+  echo          PATCHING 7.3.0 TO SPEEDUP BUILD
   echo -----------------------------------------------------------------
-  cd occt-7.2.0
-  patch -p1 < ../add_cotire_to_7.2.0.patch
+  cd occt-7.3.0
+  patch -p1 < ../add_cotire_to_7.3.0.patch
   cd ..
 fi
 
-export INSTALL_DIR=`pwd`/dist/occt-7.2.0
+export INSTALL_DIR=`pwd`/dist/occt-7.3.0
 
 mkdir -p build_linux
 cd build_linux
@@ -33,7 +33,7 @@ cmake -DINSTALL_DIR:STRING="${INSTALL_DIR}" \
           -DBUILD_MODULE_ModelingAlgorithms:BOOLEAN=ON \
           -DBUILD_MODULE_ModelingData:BOOLEAN=ON \
           -DBUILD_MODULE_Visualization:BOOLEAN=OFF \
-          ../occt-7.2.0
+          ../occt-7.3.0
 
 make -j 5  | grep -v "Building CXX"
 

@@ -28,7 +28,7 @@ ECHO ON
 SET SNAPSHOT="http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=8662560e2c9c83de9ed97b522bebcad2cfc87b92;sf=tgz"
 CALL curl  -L -o %OCCT_VER%.tgz %SNAPSHOT%
 CALL tar -xf %OCCT_VER%.tgz
-CALL mv occt-8662560 %OCCT_VER%
+CALL mv occt-2a8846f %OCCT_VER%
 
 
 ECHO OFF

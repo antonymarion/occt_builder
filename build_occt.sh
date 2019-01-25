@@ -8,7 +8,6 @@ then
   echo          PATCHING 7.3.0 TO SPEEDUP BUILD
   echo -----------------------------------------------------------------
   cd occt-7.3.0
-  patch -p1 < ../add_cotire_to_7.3.0.patch
   cd ..
 fi
 

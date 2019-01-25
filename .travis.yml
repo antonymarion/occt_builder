@@ -3,7 +3,6 @@ language: cpp
 cache: ccache
 os:
 - linux
-- osx
 addons:
   apt:
     sources:

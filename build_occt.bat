@@ -25,7 +25,7 @@ ECHO -----------------------------------------------------------------
 ECHO        DOWNLOADING OFFICIAL OCCT  %OCCT_VER% SOURCE
 ECHO -----------------------------------------------------------------
 ECHO ON
-SET SNAPSHOT="http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=8662560e2c9c83de9ed97b522bebcad2cfc87b92;sf=tgz"
+SET SNAPSHOT="http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=2a8846f92e43a12ed86b566de289c45eb3842d75;sf=tgz"
 CALL curl  -L -o %OCCT_VER%.tgz %SNAPSHOT%
 CALL tar -xf %OCCT_VER%.tgz
 CALL mv occt-2a8846f %OCCT_VER%

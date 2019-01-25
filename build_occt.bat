@@ -37,7 +37,7 @@ ECHO          PATCHING %OCCT_VER% TO SPEEDUP BUILD
 ECHO -----------------------------------------------------------------
 ECHO ON
 CD %OCCT_VER%
-CALL patch -p1 < ../add_cotire_to_7.2.0.patch
+CALL patch -p1 < ../add_cotire_to_7.3.0.patch
 CD %ROOTFOLDER%
 
 :generate_solution

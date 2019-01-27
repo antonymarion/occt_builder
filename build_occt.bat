@@ -1,6 +1,6 @@
 ECHO ON
 
-SET OCCT_VER=occt-7.3.0
+SET OCCT_VER=occt-7.1.0
 SET PLATFORM=win64
 SET ROOTFOLDER=%~dp0
 SET ARCHIVE_FOLDER=%ROOTFOLDER%dist\%PLATFORM%
@@ -25,7 +25,7 @@ ECHO -----------------------------------------------------------------
 ECHO        DOWNLOADING OFFICIAL OCCT  %OCCT_VER% SOURCE
 ECHO -----------------------------------------------------------------
 ECHO ON
-SET SNAPSHOT="http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=2a8846f92e43a12ed86b566de289c45eb3842d75;sf=tgz"
+SET SNAPSHOT="http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=89aebdea8d6f4d15cfc50e9458cd8e2e25022326;sf=tgz"
 CALL curl  -L -o %OCCT_VER%.tgz %SNAPSHOT%
 CALL tar -xf %OCCT_VER%.tgz
 CALL mv occt-2a8846f %OCCT_VER%
@@ -37,7 +37,7 @@ ECHO          PATCHING %OCCT_VER% TO SPEEDUP BUILD
 ECHO -----------------------------------------------------------------
 ECHO ON
 CD %OCCT_VER%
-CALL patch -p1 < ../add_cotire_to_7.3.0.patch
+CALL patch -p1 < ../add_cotire_to_7.1.0.patch
 CD %ROOTFOLDER%
 
 :generate_solution

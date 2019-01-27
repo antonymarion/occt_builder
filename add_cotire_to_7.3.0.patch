@@ -1,6 +1,6 @@
-diff -ruN occt-2a8846f/adm/MODULES occt-7.3.0/adm/MODULES
+diff -ruN occt-2a8846f/adm/MODULES occt-7.1.0/adm/MODULES
 --- occt-2a8846f/adm/MODULES	2018-03-18 17:00:56.649908900 +0100
-+++ occt-7.3.0/adm/MODULES	2018-03-18 15:19:01.261000000 +0100
++++ occt-7.1.0/adm/MODULES	2018-03-18 15:19:01.261000000 +0100
 @@ -3,5 +3,6 @@
  ModelingAlgorithms TKGeomAlgo TKTopAlgo TKPrim TKBO TKBool TKHLR TKFillet TKOffset TKFeat TKMesh TKXMesh TKShHealing
  Visualization TKService TKV3d TKOpenGl TKMeshVS TKIVtk TKD3DHost

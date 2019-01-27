@@ -5,5 +5,5 @@ make:
 install: 
 	cd build_linux && sudo ldconfig && make install -j4 > /dev/null
 package: install 
-	cd dist && tar -cf occt-7.3.0-${TRAVIS_OS_NAME}.tgz occt-7.3.0
+	cd dist && tar -cf occt-7.1.0-${TRAVIS_OS_NAME}.tgz occt-7.1.0
 .PHONY: prebuild make install package

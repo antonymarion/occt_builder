@@ -79,8 +79,8 @@ ECHO -----------------------------------------------------------------
 ECHO       BUILDING SOLUTION
 ECHO -----------------------------------------------------------------
 ECHO ON
-SET VERBOSITY=quiet
-REM SET VERBOSITY=minimal
+REM SET VERBOSITY=quiet
+SET VERBOSITY=minimal
 
 REM msbuild /m oce.sln
 REM CALL msbuild /m occt.sln /p:Configuration=Debug /p:Platform="x64" /verbosity:%VERBOSITY% ^

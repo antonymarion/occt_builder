@@ -20,7 +20,7 @@ CALL "%VS150COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
 ECHO skip downloading if %OCCT_VER% folder exists
 if exist %OCCT_VER% ( goto generate_solution )
 ECHO OFF
-ECHO 
+ECHO
 ECHO -----------------------------------------------------------------
 ECHO        DOWNLOADING OFFICIAL OCCT  %OCCT_VER% SOURCE
 ECHO -----------------------------------------------------------------
@@ -83,10 +83,10 @@ SET VERBOSITY=quiet
 REM SET VERBOSITY=minimal
 
 REM msbuild /m oce.sln
-CALL msbuild /m occt.sln /p:Configuration=Debug /p:Platform="x64" /verbosity:%VERBOSITY% ^
+REM CALL msbuild /m occt.sln /p:Configuration=Debug /p:Platform="x64" /verbosity:%VERBOSITY% ^
      /consoleloggerparameters:Summary;ShowTimestamp
-ECHO ERROR LEVEL = %ERRORLEVEL%
-if NOT '%ERRORLEVEL%'=='0' goto handle_msbuild_error
+REM ECHO ERROR LEVEL = %ERRORLEVEL%
+REM if NOT '%ERRORLEVEL%'=='0' goto handle_msbuild_error
 
 CALL msbuild /m occt.sln /p:Configuration=Release /p:Platform="x64" /verbosity:%VERBOSITY% ^
      /consoleloggerparameters:Summary;ShowTimestamp

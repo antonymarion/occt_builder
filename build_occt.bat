@@ -1,6 +1,6 @@
 ECHO ON
 
-SET OCCT_VER=occt-7.1.0
+SET OCCT_VER=occt-7.4.0
 SET PLATFORM=win64
 SET ROOTFOLDER=%~dp0
 SET ARCHIVE_FOLDER=%ROOTFOLDER%dist\%PLATFORM%
@@ -37,7 +37,7 @@ ECHO          PATCHING %OCCT_VER% TO SPEEDUP BUILD
 ECHO -----------------------------------------------------------------
 ECHO ON
 CD %OCCT_VER%
-CALL patch -p1 < ../add_cotire_to_7.1.0.patch
+CALL patch -p1 < ../add_cotire_to_7.4.0.patch
 CD %ROOTFOLDER%
 
 :generate_solution

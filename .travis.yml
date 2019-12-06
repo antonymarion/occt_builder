@@ -18,7 +18,7 @@ script:
 - make package
 deploy:
   provider: releases
-  file: dist/occt-7.1.0-${TRAVIS_OS_NAME}.tgz
+  file: dist/occt-7.4.0-${TRAVIS_OS_NAME}.tgz
   skip_cleanup: true
   overwrite: true
   on:

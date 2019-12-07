@@ -1,6 +1,6 @@
 if [ ! -f occt7.4.0.tgz ]
 then
-  curl  -L -o occt7.4.0.tgz "http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=89aebdea8d6f4d15cfc50e9458cd8e2e25022326;sf=tgz"
+  curl  -L -o occt7.4.0.tgz "http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=fd47711d682be943f0e0a13d1fb54911b0499c31;sf=tgz"
   tar -xf occt7.4.0.tgz
   mv occt-89aebde occt-7.4.0
 

@@ -2,7 +2,7 @@ if [ ! -f occt7.4.0.tgz ]
 then
   curl  -L -o occt7.4.0.tgz "http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=fd47711d682be943f0e0a13d1fb54911b0499c31;sf=tgz"
   tar -xf occt7.4.0.tgz
-  mv occt-89aebde occt-7.4.0
+  mv occt-fd47711 occt-7.4.0
 
   echo -----------------------------------------------------------------
   echo          PATCHING 7.4.0 TO SPEEDUP BUILD

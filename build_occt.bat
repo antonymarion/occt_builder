@@ -7,6 +7,18 @@ SET ARCHIVE_FOLDER=%ROOTFOLDER%dist\%PLATFORM%
 SET DISTFOLDER=%ARCHIVE_FOLDER%\%OCCT_VER%
 SET ARCHIVE=%OCCT_VER%-%PLATFORM%.zip
 SET FULL_ARCHIVE=%ARCHIVE_FOLDER%\%ARCHIVE%
+REM SET 3RDPARTY_DIR=%ROOTFOLDER%\3rdparties
+
+
+REM ECHO ---------------------------------------------------------------------------
+REM ECHO  DOWNLOADING THIRDPARTIES STUFF (FREETYPE)
+REM ECHO ---------------------------------------------------------------------------
+REM CALL mkdir 3RDPARTY_DIR
+REM SET FREETYPE_ZIP_URL=https://download.savannah.gnu.org/releases/freetype/ft2101.zip
+REM CALL curl  -L -o %3RDPARTY_DIR%\freetype.zip %FREETYPE_ZIP_URL%
+REM CALL unzip -a %3RDPARTY_DIR%\freetype.zip
+
+
 
 ECHO ---------------------------------------------------------------------------
 ECHO  Compiling with Visual Studio 2017 - X64
@@ -55,6 +67,7 @@ ECHO "DISTFOLDER = "%DISTFOLDER%
 
 CALL cmake -INSTALL_DIR:STRING="%DISTFOLDER%" ^
           -DCMAKE_INSTALL_PREFIX="%DISTFOLDER%" ^
+          -DUSE_FREETYPE:BOOLEAN=OFF ^
           -DCMAKE_SUPPRESS_REGENERATION:BOOLEAN=OFF  ^
           -DUSE_TCL:BOOLEAN=OFF ^
           -DUSE_FREETYPE:BOOLEAN=OFF ^
@@ -79,14 +92,8 @@ ECHO -----------------------------------------------------------------
 ECHO       BUILDING SOLUTION
 ECHO -----------------------------------------------------------------
 ECHO ON
-REM SET VERBOSITY=quiet
-SET VERBOSITY=minimal
 
-REM msbuild /m oce.sln
-REM CALL msbuild /m occt.sln /p:Configuration=Debug /p:Platform="x64" /verbosity:%VERBOSITY% ^
-     /consoleloggerparameters:Summary;ShowTimestamp
-REM ECHO ERROR LEVEL = %ERRORLEVEL%
-REM if NOT '%ERRORLEVEL%'=='0' goto handle_msbuild_error
+SET VERBOSITY=minimal
 
 CALL msbuild /m occt.sln /p:Configuration=Release /p:Platform="x64" /verbosity:%VERBOSITY% ^
      /consoleloggerparameters:Summary;ShowTimestamp

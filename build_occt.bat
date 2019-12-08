@@ -7,24 +7,26 @@ SET ARCHIVE_FOLDER=%ROOTFOLDER%dist\%PLATFORM%
 SET DISTFOLDER=%ARCHIVE_FOLDER%\%OCCT_VER%
 SET ARCHIVE=%OCCT_VER%-%PLATFORM%.zip
 SET FULL_ARCHIVE=%ARCHIVE_FOLDER%\%ARCHIVE%
-REM SET 3RDPARTY_DIR=%ROOTFOLDER%\3rdparties
+SET 3RDPARTY_DIR=%ROOTFOLDER%\3rdparties
+SET FREETYPELIB=%3RDPARTY_DIR%\freetype
+SET FREETYPEINC=%3RDPARTY_DIR%\freetype\include
 
 
-REM ECHO ---------------------------------------------------------------------------
-REM ECHO  DOWNLOADING THIRDPARTIES STUFF (FREETYPE)
-REM ECHO ---------------------------------------------------------------------------
-REM CALL mkdir 3RDPARTY_DIR
-REM SET FREETYPE_ZIP_URL=https://download.savannah.gnu.org/releases/freetype/ft2101.zip
-REM CALL curl  -L -o %3RDPARTY_DIR%\freetype.zip %FREETYPE_ZIP_URL%
-REM CALL unzip -a %3RDPARTY_DIR%\freetype.zip
-
+ECHO ---------------------------------------------------------------------------
+ECHO  DOWNLOADING THIRDPARTIES STUFF (FREETYPE)
+ECHO ---------------------------------------------------------------------------
+CALL mkdir 3RDPARTY_DIR
+SET FREETYPE_ZIP_URL="https://download.savannah.gnu.org/releases/freetype/ft2101.zip"
+CALL curl  -L -o freetype.zip %FREETYPE_ZIP_URL%
+CALL unzip -a freetype.zip
+CALL move freetype-2.10.1 %3RDPARTY_DIR%\freetype
 
 
 ECHO ---------------------------------------------------------------------------
 ECHO  Compiling with Visual Studio 2017 - X64
 ECHO ---------------------------------------------------------------------------
 SET VSVER=2017
-REM CALL "%~dp0"/SETENV.BAT  64
+CALL "%~dp0"/SETENV.BAT  64
 set GENERATOR=Visual Studio 15 2017 Win64
 set VisualStudioVersion=15.0
 CALL "%VS150COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
@@ -67,6 +69,8 @@ ECHO "DISTFOLDER = "%DISTFOLDER%
 
 CALL cmake -INSTALL_DIR:STRING="%DISTFOLDER%" ^
           -DCMAKE_INSTALL_PREFIX="%DISTFOLDER%" ^
+          -DFREETYPE_LIBRARY="%FREETYPELIB%" ^
+          -DFREETYPE_INCLUDE_DIRS="%FREETYPEINC%" ^
           -DUSE_FREETYPE:BOOLEAN=OFF ^
           -DCMAKE_SUPPRESS_REGENERATION:BOOLEAN=OFF  ^
           -DUSE_TCL:BOOLEAN=OFF ^

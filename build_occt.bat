@@ -7,21 +7,25 @@ SET ARCHIVE_FOLDER=%ROOTFOLDER%dist\%PLATFORM%
 SET DISTFOLDER=%ARCHIVE_FOLDER%\%OCCT_VER%
 SET ARCHIVE=%OCCT_VER%-%PLATFORM%.zip
 SET FULL_ARCHIVE=%ARCHIVE_FOLDER%\%ARCHIVE%
-SET 3RDPARTY_DIR=%ROOTFOLDER%\3rdparties
-SET FREETYPELIB=%3RDPARTY_DIR%\freetype
-SET FREETYPEINC=%3RDPARTY_DIR%\freetype\include
+SET THIRDPARTIES_DIR=%ROOTFOLDER%\3RD_PARTIES_DIR
+SET FREETYPELIB=%THIRDPARTIES_DIR%\freetype
 
+
+SET FREETYPEINC=%FREETYPELIB%\include
+
+ECHO skip downloading if %FREETYPELIB% folder exists
+if exist %FREETYPELIB% ( goto compiling )
 
 ECHO ---------------------------------------------------------------------------
 ECHO  DOWNLOADING THIRDPARTIES STUFF (FREETYPE)
 ECHO ---------------------------------------------------------------------------
-CALL mkdir 3RDPARTY_DIR
+CALL mkdir %THIRDPARTIES_DIR%
 SET FREETYPE_ZIP_URL="https://download.savannah.gnu.org/releases/freetype/ft2101.zip"
 CALL curl  -L -o freetype.zip %FREETYPE_ZIP_URL%
 CALL unzip -a freetype.zip
-CALL move freetype-2.10.1 %3RDPARTY_DIR%\freetype
+CALL move freetype-2.10.1 %FREETYPELIB%
 
-
+:compiling
 ECHO ---------------------------------------------------------------------------
 ECHO  Compiling with Visual Studio 2017 - X64
 ECHO ---------------------------------------------------------------------------
@@ -143,5 +147,3 @@ exit 0
 
 :handle_install_error
 :handle_msbuild_error
-exit 1
-

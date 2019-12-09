@@ -9,7 +9,7 @@ SET ARCHIVE=%OCCT_VER%-%PLATFORM%.zip
 SET FULL_ARCHIVE=%ARCHIVE_FOLDER%\%ARCHIVE%
 SET THIRDPARTIES_DIR=%ROOTFOLDER%3RD_PARTIES_DIR
 SET FREETYPELIB=%THIRDPARTIES_DIR%\freetype
-
+SET OpenCASCADE_WITH_FREETYPE="OFF"
 
 SET FREETYPEINC=%FREETYPELIB%\include
 
@@ -30,10 +30,8 @@ ECHO ---------------------------------------------------------------------------
 ECHO  Compiling with Visual Studio 2017 - X64
 ECHO ---------------------------------------------------------------------------
 SET VSVER=2017
-CALL "%~dp0"/SETENV.BAT  64
 set GENERATOR=Visual Studio 15 2017 Win64
 set VisualStudioVersion=15.0
-CALL "%VS150COMNTOOLS%\..\..\VC\vcvarsall.bat" amd64
 
 ECHO skip downloading if %OCCT_VER% folder exists
 if exist %OCCT_VER% ( goto generate_solution )
@@ -73,12 +71,9 @@ ECHO "DISTFOLDER = "%DISTFOLDER%
 
 CALL cmake -INSTALL_DIR:STRING="%DISTFOLDER%" ^
           -DCMAKE_INSTALL_PREFIX="%DISTFOLDER%" ^
-          -DFREETYPE_LIBRARY="%FREETYPELIB%" ^
-          -DFREETYPE_INCLUDE_DIRS="%FREETYPEINC%" ^
-          -DUSE_FREETYPE:BOOLEAN=OFF ^
           -DCMAKE_SUPPRESS_REGENERATION:BOOLEAN=OFF  ^
           -DUSE_TCL:BOOLEAN=OFF ^
-          -DUSE_FREETYPE:BOOLEAN=OFF ^
+          -DUSE_FREETYPE:BOOLEAN=0 ^
           -DUSE_VTK:BOOLEAN=OFF ^
           -DBUILD_USE_PCH:BOOLEAN=ON ^
           -DBUILD_SHARED_LIBS:BOOLEAN=OFF ^

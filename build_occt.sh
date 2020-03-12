@@ -14,6 +14,8 @@ fi
 
 export INSTALL_DIR=`pwd`/dist/occt-7.4.0
 
+sudo apt-get install libfreetype6-dev libttb-dev -y
+
 mkdir -p build_linux
 cd build_linux
 export CCACHE_SLOPPINESS="pch_defines;time_macros"

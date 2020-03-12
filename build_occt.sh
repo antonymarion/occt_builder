@@ -14,7 +14,8 @@ fi
 
 export INSTALL_DIR=`pwd`/dist/occt-7.4.0
 
-sudo apt-get install libfreetype6-dev libttb-dev -y
+sudo apt-get update -y 
+sudo apt-get install libfreetype6-dev libtbb-dev -y
 
 mkdir -p build_linux
 cd build_linux
